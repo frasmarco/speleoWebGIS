@@ -36,3 +36,5 @@ locale-gen it_IT.UTF-8
 ## install apiServer service
 sudo cp apiServer@.service /etc/systemd/system
 sudo systemctl daemon-reload
+sudo systemctl start apiServer@3000
+sudo systemctl enable apiServer@3000

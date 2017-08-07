@@ -3,12 +3,14 @@ Description=Node.js postGraphQl server
 Documentation=https://github.com/frasmarco/apiServer
 After=network.target
 Wants=postgresql.service
+AssertPathExists=/var/www/apiServer
 
 [Service]
 Environment=NODE_PORT=%i
 Type=simple
 User=www-data
-ExecStart=cd /var/www/apiServer&&npm start
+WorkingDirectory=/var/www/apiServer
+ExecStart=/usr/bin/npm start
 Restart=on-failure
 
 [Install]
