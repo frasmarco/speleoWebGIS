@@ -6,7 +6,7 @@ sudo apt-get install -y software-properties-common
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
 sudo apt-get install -y python-certbot-apache
-sudo apt-get install -y postgresql postgis
+sudo apt-get install -y language-pack-en postgresql postgis
 
 curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
 sudo apt-get install nodejs
@@ -25,6 +25,14 @@ cd apiServer
 npm install
 ## Remember to configure it!
 
+## Postgres setup
 echo "host    all             all             all            md5" >> /etc/postgresql/9.6/main/pg_hba.conf
-cp postgresql.conf /etc/postgresql/9.6/main/
-chown posgres:postgres /etc/postgresql/9.6/main/postgresql.conf
+cat postgresql.conf >/etc/postgresql/9.6/main/postgresql.conf
+systemctl restart postgresql
+
+## Fix locales
+locale-gen it_IT.UTF-8
+
+## install apiServer service
+sudo cp apiServer@.service /etc/systemd/system
+sudo systemctl daemon-reload

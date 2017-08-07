@@ -1,0 +1,15 @@
+[Unit]
+Description=Node.js postGraphQl server
+Documentation=https://github.com/frasmarco/apiServer
+After=network.target
+Wants=postgresql.service
+
+[Service]
+Environment=NODE_PORT=%i
+Type=simple
+User=www-data
+ExecStart=cd /var/www/apiServer&&npm start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
