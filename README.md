@@ -9,6 +9,7 @@ Data model is based and derived from the needs of the SSI, the italian speleolog
 1. OpenLayers module is custom made, no npm because none is sufficiently mature (as 30 Jun 2017)
 1. Integration beetween Angular and graphql uses [apollo-client](http://dev.apollodata.com/angular2/).
 1. Authentication/authorization leverages [passport](http://passportjs.org/).
+1. Postgres full backup: pg_basebackup -D "/tmp/$(date +%Y%m%d-%H%M%z)" -R -X stream
 ### Projects on GitHub
 * This is the main project, [speleoWebGis](https://github.com/frasmarco/speleoWebGIS). It contains docs and general Linux config files and configuration commands.
 * [apiServer](https://github.com/frasmarco/apiServer) is the backend Node.js application.
